@@ -142,6 +142,47 @@ O sistema será desenvolvido seguindo o padrão de arquitetura MVC (Model-View-C
 - Processo de correção de bugs e implementação de melhorias.
 - Atualizações de segurança e de software.
 
+### Ambientes de Implantação:
+
+- Configurar ambos os ambientes, desenvolvimento (Dev) e produção (Prod), na mesma máquina para simplificar o gerenciamento.
+- Utilizar diferentes portas ou nomes de host para acessar os ambientes, por exemplo, localhost:3000 para Dev e localhost:4000 para Prod.
+
+### Procedimentos de Implantação:
+
+#### Para o ambiente de desenvolvimento:
+
+- Utilizar Docker Compose para orquestrar os contêineres em um único nó Docker Swarm dedicado ao ambiente de desenvolvimento.
+- Configurar o acesso aos serviços do ambiente de desenvolvimento apenas localmente para garantir a segurança.
+
+#### Para o ambiente de produção:
+
+- Deploy em VM free tier Oracle com Linux e configuração de redes e do serviço para receber acesso com port forwarding.
+
+### Migração de Dados, se Necessário:
+
+- Desenvolver scripts de migração de dados compatíveis com o Docker Swarm que possam ser executados na mesma máquina.
+- Utilizar volumes persistentes do Docker Swarm para armazenar dados compartilhados entre os serviços em ambientes de desenvolvimento e produção.
+
+### Gestão de Configuração e Controle de Versão:
+
+#### Política de Versão (SemVer):
+
+- Adotar o Semantic Versioning (SemVer) como política de versionamento para o seu projeto.
+- Seguir a estrutura MAJOR.MINOR.PATCH para versionamento, onde:
+  - Incrementos MAJOR são para mudanças incompatíveis com versões anteriores.
+  - Incrementos MINOR são para adições compatíveis com versões anteriores.
+  - Incrementos PATCH são para correções de bugs compatíveis com versões anteriores.
+
+#### Ramificação do Código-fonte (GitFlow):
+
+- Utilizar o GitFlow como modelo de ramificação para organizar o fluxo de trabalho, com branches principais para feature, develop, release e master.
+- Desenvolver novas funcionalidades em branches de feature, integrá-las ao branch develop e, após testes adequados, fazer o merge para o branch release e, eventualmente, para o branch master.
+
+#### Uso de Ferramentas de Controle de Versão (Git):
+
+- Utilizar o Git como a principal ferramenta de controle de versão, seguindo os princípios do GitFlow e do padrão de commit Conventional Commits dentro do GitHub.
+
+
 ---
 
 Este README fornece uma visão abrangente do projeto de uma API para coleta de dados sobre abelhas e colmeias, incluindo a descrição do sistema, requisitos, arquitetura e planejamento de implantação. Para mais detalhes, consulte a documentação específica de cada módulo e componente.
